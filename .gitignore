@@ -7,6 +7,8 @@ gradlew.bat
 libs/
 
 # Visual Studio Code
+.classpath
 .project
 .settings/
 .vscode/
+bin/
