@@ -5,6 +5,7 @@ gradle/
 gradlew
 gradlew.bat
 libs/
+run/
 
 # Visual Studio Code
 .classpath
