@@ -1,0 +1,11 @@
+# Minecraft / Forge
+.gradle/
+build/
+gradle/
+gradlew
+gradlew.bat
+libs/
+
+# Visual Studio Code
+.project
+.settings/
