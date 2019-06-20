@@ -1,0 +1,81 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+
+version = "${minecraft_version}-${mod_version}"
+group = "customblockgenerator"
+archivesBaseName = "CustomBlockGenerator"
+
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
+minecraft {
+    version = "${minecraft_version}-14.23.5.2838"
+    runDir = "run"
+    mappings = "snapshot_20171003"
+
+    replace("@VERSION@", project.version)
+    replaceIn("GregTechSieves.java")
+}
+
+repositories {
+    maven {
+        name = "ChickenBones maven"
+        url = "http://chickenbones.net/maven/"
+    }
+    maven {
+        name = "CraftTweaker Maven"
+        url 'http://maven.blamejared.com'
+    }
+    maven {
+        name = "Forgelin Maven"
+        url = "http://maven.shadowfacts.net/"
+    }
+    maven {
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven/"
+    }
+    maven {
+        name = "tterrag maven"
+        url = "http://maven.tterrag.com/"
+    }
+    maven {
+        name = "tehnut"
+        url = "http://tehnut.info/maven"
+    }
+}
+
+dependencies {
+    deobfCompile "codechicken:CodeChickenLib:${minecraft_version}-${code_chicken_lib_version}:deobf"
+    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:${short_version}-${crafttweaker_version}"
+    deobfCompile "exnihilocreatio:exnihilocreatio:${minecraft_version}-${ex_nihilo_version}"
+    compile files("libs/gregtech-${minecraft_version}-${gregtech_community_edition_version}.jar")
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
