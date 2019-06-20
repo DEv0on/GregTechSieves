@@ -9,3 +9,4 @@ libs/
 # Visual Studio Code
 .project
 .settings/
+.vscode/
