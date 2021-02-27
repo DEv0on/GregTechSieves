@@ -6,4 +6,5 @@ gregtechsieves.machine.sieve.iv.name=Advanced Electric Sieve IV
 gregtechsieves.machine.sieve.luv.name=Advanced Electric Sieve V
 gregtechsieves.machine.sieve.zpm.name=Advanced Electric Sieve VI
 gregtechsieves.machine.sieve.uv.name=Advanced Electric Sieve VII
-recipemap.electric_sieve.name=Electric Sieve
+gregtechsieves.machine.sieve.steam.name=Steam Sieve
+recipemap.sieve.name=GT Sieve

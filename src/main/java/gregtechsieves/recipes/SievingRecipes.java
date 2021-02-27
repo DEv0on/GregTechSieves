@@ -13,17 +13,18 @@ public class SievingRecipes {
       for (ItemStack sievable : recipe.getSievables()) {
         ItemStack mesh = recipe.getMesh();
         SimpleRecipeBuilder builder = RecipeMaps.SIEVE_RECIPES.recipeBuilder()
-          .notConsumable(mesh)
-          .inputs(sievable)
-          .duration(100)
-          .EUt(4);
+                .notConsumable(mesh)
+                .inputs(sievable)
+                .duration(100)
+                .EUt(4);
         for (Siftable siftable : ExNihiloRegistryManager.SIEVE_REGISTRY.getDrops(sievable)) {
           if (siftable.getMeshLevel() == mesh.getMetadata()) {
             builder.chancedOutput(
               siftable.getDrop().getItemStack(),
               floatChanceToIntChance(siftable.getChance()),
-              750
+              100
             );
+
           }
         }
         builder.buildAndRegister();
