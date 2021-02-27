@@ -22,7 +22,7 @@ public class SievingRecipes {
             builder.chancedOutput(
               siftable.getDrop().getItemStack(),
               floatChanceToIntChance(siftable.getChance()),
-              100
+              50
             );
 
           }
