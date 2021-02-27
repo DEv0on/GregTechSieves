@@ -5,15 +5,20 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
+        maven {
+            name 'maven'
+            url 'https://mvnrepository.com/artifact/'
+        }
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'net.nemerosa:versioning:2.7.1'
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'net.nemerosa.versioning'
 
-
-version = "${minecraft_version}-${mod_version}"
+version = "${versioning.info.build}"
 group = "gregtechsieves"
 archivesBaseName = "GregTechSieves"
 
@@ -23,7 +28,7 @@ compileJava {
 }
 
 minecraft {
-    version = "${minecraft_version}-14.23.5.2838"
+    version = "${minecraft_version}-14.23.5.2847"
     runDir = "run"
     mappings = "snapshot_20171003"
 
@@ -32,6 +37,10 @@ minecraft {
 }
 
 repositories {
+    maven {
+        name = 'mezz'
+        url = 'https://dvs1.progwml6.com/files/maven/'
+    }
     maven {
         name = "ChickenBones maven"
         url = "http://chickenbones.net/maven/"
@@ -54,15 +63,21 @@ repositories {
     }
     maven {
         name = "tehnut"
-        url = "http://tehnut.info/maven"
+        url = "http://maven.tehnut.info/"
+    }
+    maven {
+        name = "curseforge-maven"
+        url "https://www.cursemaven.com"
     }
 }
 
 dependencies {
-    deobfCompile "codechicken:CodeChickenLib:${minecraft_version}-${code_chicken_lib_version}:deobf"
-    deobfCompile "CraftTweaker2:CraftTweaker2-MC1120-Main:${short_version}-${crafttweaker_version}"
-    deobfCompile "exnihilocreatio:exnihilocreatio:${minecraft_version}-${ex_nihilo_version}"
-    compile files("libs/gregtech-${minecraft_version}-${gregtech_community_edition_version}.jar")
+    compile "codechicken:CodeChickenLib:${minecraft_version}-${code_chicken_lib_version}:deobf"
+    compile "CraftTweaker2:CraftTweaker2-MC1120-Main:${short_version}-${crafttweaker_version}"
+    compile "ex-nihilo-creatio:exnihilocreatio:${minecraft_version}:${ex_nihilo_version}"
+    compile "curse.maven:gtce-293327:${gtce_version}"
+    compile "mezz.jei:jei_${minecraft_version}:${jei_version}"
+    compile "shadowfacts-forgelin:Forgelin:${forgelin_version}"
 }
 
 processResources {
@@ -71,10 +86,10 @@ processResources {
 
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-                
+
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
-        
+
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }

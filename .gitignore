@@ -1,15 +1,22 @@
-# Minecraft / Forge
-.gradle/
-build/
-gradle/
-gradlew
-gradlew.bat
-libs/
-run/
-
-# Visual Studio Code
+# eclipse
+bin
+*.launch
+.settings
+.metadata
 .classpath
 .project
-.settings/
-.vscode/
-bin/
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
