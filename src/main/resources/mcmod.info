@@ -1,16 +1,17 @@
 [
   {
     "modid": "gregtechsieves",
-    "name": "GregTech Sieves",
+    "name": "GregTechSieves",
     "description": "An addon for GregTech Community Edition and Ex Nihilo. Provides electric sieves for all power levels.",
     "version": "${version}",
     "mcversion": "${mcversion}",
     "url": "",
     "updateUrl": "",
     "authorList": [
-      "Nuzzleskatev"
+      "Nuzzleskatev",
+      "DEv0on"
     ],
-    "credits": "The creators of GTCE, Ex Nihilo and GregoriusT.",
+    "credits": "",
     "logofile": "",
     "dependencies": [
       "crafttweaker",
