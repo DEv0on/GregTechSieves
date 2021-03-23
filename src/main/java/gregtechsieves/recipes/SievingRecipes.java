@@ -5,6 +5,7 @@ import exnihilocreatio.registries.manager.ExNihiloRegistryManager;
 import exnihilocreatio.registries.types.Siftable;
 import gregtech.api.recipes.Recipe;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
+import gregtechsieves.GregTechSieves;
 import net.minecraft.item.ItemStack;
 
 public class SievingRecipes {
@@ -22,7 +23,7 @@ public class SievingRecipes {
             builder.chancedOutput(
               siftable.getDrop().getItemStack(),
               floatChanceToIntChance(siftable.getChance()),
-              50
+                    (int)Math.round(GregTechSieves.GregTechSievesConfig.chancePerTier*100)
             );
 
           }
